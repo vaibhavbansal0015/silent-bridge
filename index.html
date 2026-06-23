@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SilentBridge AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🤟 SilentBridge AI</h1>
+        <p>An Indian Sign Language communication assistant for hospitals and public services.</p>
+    </header>
+
+    <section class="main-grid">
+        <div class="camera-panel">
+            <div class="camera-container">
+                <video id="camera" autoplay playsinline muted></video>
+                <canvas id="output"></canvas>
+            </div>
+
+            <div class="status-card">
+                <h2>Detected Gesture</h2>
+                <p id="result">Waiting for camera...</p>
+                <p id="gestureDescription" class="secondary-text">Start the camera and show a supported gesture for hospital or public service assistance.</p>
+            </div>
+
+            <div class="controls">
+                <button id="startBtn">📷 Start Camera</button>
+                <button id="hospitalModeBtn">🏥 Hospital Mode</button>
+                <button id="voiceToggleBtn">🔊 Voice: On</button>
+            </div>
+        </div>
+
+        <aside class="assistant-panel">
+            <div class="assistant-card">
+                <h2>AI Phrase Assistant</h2>
+                <p>Choose a common phrase for hospitals or public services.</p>
+                <div class="phrase-sections">
+                    <button class="phrase-category active" data-category="Hospital">Hospital</button>
+                    <button class="phrase-category" data-category="Public Services">Public Services</button>
+                </div>
+                <div id="phraseList" class="phrase-list"></div>
+            </div>
+
+            <div class="assistant-card hospital-mode-card hidden" id="hospitalModePanel">
+                <h2>Hospital Mode</h2>
+                <p>Quick emergency communication for deaf or hard-of-hearing users.</p>
+
+                <div class="quick-buttons" id="hospitalPhraseButtons"></div>
+
+                <div class="speech-section">
+                    <div class="speech-actions">
+                        <button id="startListeningBtn" type="button">🎤 Start Listening</button>
+                        <button id="stopListeningBtn" type="button" disabled>⏹ Stop Listening</button>
+                        <button id="speakBtn" type="button">🔊 Speak</button>
+                    </div>
+                    <input id="customTextInput" class="custom-text-input" type="text" placeholder="Type a custom message to speak" aria-label="Custom message input">
+                    <div class="speech-output" id="speechTranscript" aria-live="polite">No spoken text detected yet.</div>
+                    <div class="speech-status" id="speechStatus">Ready to listen.</div>
+                </div>
+
+                <div class="history-section">
+                    <h3>Conversation History</h3>
+                    <div class="history-log" id="historyLog"></div>
+                </div>
+            </div>
+
+            <div class="assistant-card">
+                <h3>Ask the assistant</h3>
+                <textarea id="queryInput" placeholder="e.g. I need a doctor, emergency, where is the restroom?"></textarea>
+                <button id="askBtn">Ask</button>
+                <div class="response-box">
+                    <p id="assistantResponse">The assistant is ready to help.</p>
+                </div>
+            </div>
+        </aside>
+    </section>
+
+    <section class="info-panel">
+        <div class="info-card">
+            <h3>Built-In Emergency Support</h3>
+            <p>Select phrases to speak aloud, or use hand gestures for quick communication in hospital and public service settings.</p>
+        </div>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
